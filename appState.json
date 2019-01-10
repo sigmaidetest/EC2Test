@@ -1,0 +1,80 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "4d54c8ea-21c3-4fb8-8ee2-a4de1b784ef5": {
+        "id": "4d54c8ea-21c3-4fb8-8ee2-a4de1b784ef5",
+        "parent": null,
+        "name": "EC2Test",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "fa0cabfe-efef-4d33-84a3-92caa02563e5"
+        ],
+        "isRemovable": false,
+        "filePath": "EC2Test"
+      },
+      "fa0cabfe-efef-4d33-84a3-92caa02563e5": {
+        "id": "fa0cabfe-efef-4d33-84a3-92caa02563e5",
+        "parent": "4d54c8ea-21c3-4fb8-8ee2-a4de1b784ef5",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "EC2Test/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst ec2 = new AWS.EC2();\n\nexports.handler = function (event, context, callback) {\n\n    // ec2.stopInstances({\n    //     InstanceIds: [\n    //         \"i-04419cd9fc033848f\"\n    //     ]\n    // }).promise()\n    // .then(data => {\n    //     console.log(data);\n    //     callback(null, data);\n    // })\n    // .catch(err => {\n    //     console.log(\"Error occurred\", err);\n    //     callback(err);\n    // });\n\n    // ec2.startInstances({\n    //     InstanceIds: [\n    //         \"i-04419cd9fc033848f\"\n    //     ]\n    // }).promise()\n    // .then(data => {\n    //     console.log(data);\n    //     callback(null, data);\n    // })\n    // .catch(err => {\n    //     console.log(\"Error occurred\", err);\n    //     callback(err);\n    // });\n\n    ec2.describeInstanceStatus({\n        InstanceIds: [\n            \"i-04419cd9fc033848f\"\n        ]\n    }).promise()\n    .then(data => {\n        console.log(data);\n        callback(null, data);\n    })\n    .catch(err => {\n        console.log(\"Error occurred\", err);\n        callback(err);\n    });\n}",
+        "triggers": [],
+        "config": {
+          "runtime": "nodejs8.10",
+          "timeout": 60,
+          "memory": 128
+        },
+        "testCases": {
+          "e6d83e9e-99eb-4251-b748-5a4704bc7259": {
+            "id": "e6d83e9e-99eb-4251-b748-5a4704bc7259",
+            "name": "E1",
+            "functionId": "fa0cabfe-efef-4d33-84a3-92caa02563e5",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "4d54c8ea-21c3-4fb8-8ee2-a4de1b784ef5",
+    "openFiles": [
+      "fa0cabfe-efef-4d33-84a3-92caa02563e5"
+    ],
+    "currentFileId": "fa0cabfe-efef-4d33-84a3-92caa02563e5",
+    "resources": {},
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    },
+    "lambdaId": "fa0cabfe-efef-4d33-84a3-92caa02563e5"
+  },
+  "PROJECT_META": {
+    "projectName": "EC2Test",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1547118337284
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "EC2Test",
+      "url": "https://github.com/sigmaidetest/EC2Test"
+    }
+  }
+}
